@@ -9,5 +9,4 @@ else
 fi
 
 source ./venv/bin/activate
-cd ./backend/
 flask --app main run --debug
