@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ugly Page - IT Expo Project</title>
+    <style>
+        :root {
+            --background: #ff00ff; /* Bright magenta */
+            --text-primary: #00ffff; /* Cyan */
+            --text-secondary: #ffff00; /* Bright yellow */
+            --accent: #00ff00; /* Bright green */
+            --accent-light: #ff0000; /* Bright red */
+            --accent-dark: #0000ff; /* Bright blue */
+            --shadow-light: #ff00ff; /* Bright magenta */
+            --shadow-dark: #00ff00; /* Bright green */
+            --card-bg: #ffff00; /* Bright yellow */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            animation: colorChange 5s infinite alternate;
+        }
+
+        @keyframes colorChange {
+            0% { background: #ff00ff; }
+            25% { background: #00ff00; }
+            50% { background: #ff0000; }
+            75% { background: #0000ff; }
+            100% { background: #ffff00; }
+        }
+
+        header {
+            background: var(--accent);
+            padding: 1.5rem 2rem;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
+            border: 5px dashed var(--accent-light);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            text-shadow: 3px 3px 0 var(--accent-dark);
+            transform: rotate(-5deg);
+        }
+
+        header a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: var(--text-secondary);
+        }
+
+        nav {
+            background: var(--accent-dark);
+            padding: 1rem 2rem;
+            margin: 0 2rem;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 3px dotted var(--accent-light);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+            transform: scale(1.1);
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            margin: 0 2rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
+            border: 4px double var(--accent);
+            transform: rotate(1deg);
+        }
+
+        h2 {
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            text-decoration: underline wavy var(--accent-dark);
+            text-align: center;
+        }
+
+        p {
+            color: var(--accent-dark);
+            line-height: 1.6;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+
+        footer {
+            background: var(--accent-dark);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            box-shadow: 0 -5px 10px var(--shadow-dark);
+            border-top: 5px solid var(--accent-light);
+        }
+
+        /* Button styles */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent);
+            color: var(--accent-light);
+            cursor: pointer;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 3px solid var(--accent-dark);
+        }
+
+        .btn:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .btn:active {
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+            transform: scale(0.9);
+        }
+
+        /* Form elements */
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 3px solid var(--accent-light);
+            border-radius: 10px;
+            background: var(--accent-dark);
+            color: var(--text-secondary);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark),
+                       inset -3px -3px 6px var(--shadow-light);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark),
+                       inset -4px -4px 8px var(--shadow-light);
+            background: var(--accent);
+            color: var(--accent-light);
+        }
+
+        /* Ugly Content Styles */
+        .ugly-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .ugly-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 3px solid var(--accent-light);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .ugly-card:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        
+        .ugly-card:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+        }
+        
+        .ugly-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 3px dashed var(--accent);
+            padding-bottom: 10px;
+        }
+        
+        .ugly-title {
+            font-weight: bold;
+            color: var(--accent-light);
+            font-size: 1.4em;
+            text-shadow: 2px 2px 0 var(--accent-dark);
+        }
+        
+        .ugly-date {
+            color: var(--accent-dark);
+            font-size: 1em;
+            font-style: italic;
+        }
+        
+        .ugly-content {
+            line-height: 1.8;
+            color: var(--accent-dark);
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        
+        .ugly-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-light), var(--accent-dark), var(--text-secondary));
+            margin: 15px 0;
+            border-radius: 10px;
+            border: 5px dotted var(--accent);
+            animation: gradientMove 3s infinite alternate;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .ugly-form {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--accent-dark);
+            border-radius: 10px;
+            border: 4px solid var(--accent-light);
+            transform: rotate(1deg);
+        }
+        
+        .ugly-form h3 {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration: underline wavy var(--accent);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            background: var(--accent);
+            color: var(--accent-light);
+            padding: 10px 0;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .marquee span {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Raptor Connect</a></h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="updates.html">Updates</a>
+        <a href="parent_communication.html">Parent Communication</a>
+        <a href="student_communication.html">Student Communication</a>
+        <a href="teacher_communication.html">Teacher Communication</a>
+        <a href="ugly_page.html" class="blink">Ugly Page</a>
+    </nav>
+    <main>
+        <section id="ugly-section">
+            <h2>Welcome to the Ugliest Page Ever!</h2>
+            <p>This page was intentionally designed with the worst color scheme imaginable. Enjoy the eye strain!</p>
+            
+            <div class="marquee">
+                <span>WARNING: EXTREME COLORS AHEAD! WARNING: EXTREME COLORS AHEAD! WARNING: EXTREME COLORS AHEAD!</span>
+            </div>
+            
+            <div class="ugly-container">
+                <div class="ugly-card">
+                    <div class="ugly-header">
+                        <div class="ugly-title">Why This Page Exists</div>
+                        <div class="ugly-date">Today</div>
+                    </div>
+                    <div class="ugly-content">
+                        <p>This page was created as a demonstration of what NOT to do when designing a website. The colors are intentionally clashing, the animations are distracting, and the overall design is meant to be as unpleasant as possible.</p>
+                        <p>In web design, it's important to maintain a consistent color scheme, use readable fonts, and create a user-friendly experience. This page does the opposite of all those principles.</p>
+                    </div>
+                    <div class="ugly-image"></div>
+                </div>
+                
+                <div class="ugly-card">
+                    <div class="ugly-header">
+                        <div class="ugly-title">Color Theory Gone Wrong</div>
+                        <div class="ugly-date">Yesterday</div>
+                    </div>
+                    <div class="ugly-content">
+                        <p>In proper color theory, we use complementary colors, maintain proper contrast, and ensure text is readable. This page uses:</p>
+                        <ul>
+                            <li>Bright magenta background</li>
+                            <li>Cyan text</li>
+                            <li>Bright yellow accents</li>
+                            <li>Bright green and red highlights</li>
+                            <li>Bright blue shadows</li>
+                        </ul>
+                        <p>All of these colors together create a visual nightmare that's hard to look at for more than a few seconds.</p>
+                    </div>
+                </div>
+                
+                <div class="ugly-card">
+                    <div class="ugly-header">
+                        <div class="ugly-title">Typography Mistakes</div>
+                        <div class="ugly-date">Last Week</div>
+                    </div>
+                    <div class="ugly-content">
+                        <p>This page uses Comic Sans MS, which is widely considered one of the most unprofessional fonts. The text sizes are inconsistent, and there's no clear hierarchy.</p>
+                        <p>Proper typography should be:</p>
+                        <ul>
+                            <li>Readable</li>
+                            <li>Consistent</li>
+                            <li>Professional</li>
+                            <li>Hierarchical</li>
+                        </ul>
+                        <p>This page fails on all counts.</p>
+                    </div>
+                </div>
+                
+                <div class="ugly-form">
+                    <h3>Tell Us How Much You Hate This Page</h3>
+                    <form id="ugly-form">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">How Ugly Is This Page?</label>
+                            <select id="rating" required>
+                                <option value="">Select Rating</option>
+                                <option value="1">Slightly Ugly</option>
+                                <option value="2">Moderately Ugly</option>
+                                <option value="3">Very Ugly</option>
+                                <option value="4">Extremely Ugly</option>
+                                <option value="5">The Ugliest Thing I've Ever Seen</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comments">Additional Comments:</label>
+                            <textarea id="comments" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="blink">&copy; 2025 Raptor Connect | All Rights Reserved | This Page Will Hurt Your Eyes</p>
+    </footer>
+</body>
+</html> 
