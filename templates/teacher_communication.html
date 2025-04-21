@@ -3,47 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Communication - Raptor Connect Hub</title>
+    <title>Teacher Communication - IT Expo Project</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --background: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --accent: #ff6a00;
+            --accent-light: #ffa366;
+            --accent-dark: #cc5500;
+            --shadow-light: #ffffff;
+            --shadow-dark: #e0e0e0;
+            --card-bg: #f9f9f9;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         header {
-            background-color: #ff6a00;
-            color: white;
-            padding: 10px 20px;
+            background: var(--accent);
+            padding: 1.5rem 2rem;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
         }
+
         header h1 {
             margin: 0;
-        }
-        nav {
-            background-color: #000000;
-            padding: 10px;
-        }
-        nav a {
+            font-size: 2rem;
+            font-weight: 600;
             color: white;
-            margin: 0 15px;
+        }
+
+        header a {
+            color: white;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
+
+        header a:hover {
+            color: var(--accent-light);
+        }
+
+        nav {
+            background: var(--background);
+            padding: 1rem 2rem;
+            margin: 0 2rem;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 1px solid var(--accent-light);
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
         main {
-            padding: 20px;
+            flex: 1;
+            padding: 2rem;
+            margin: 0 2rem;
         }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-light);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         footer {
-            background-color: #333;
+            background: var(--accent);
             color: white;
             text-align: center;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
+            padding: 1.5rem;
+            margin-top: auto;
+            box-shadow: 0 -5px 10px var(--shadow-dark);
+        }
+
+        /* Button styles */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-dark);
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
+        .btn:active {
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
+        /* Form elements */
+        input, textarea, select {
             width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid var(--accent-light);
+            border-radius: 10px;
+            background: var(--background);
+            color: var(--text-primary);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark),
+                       inset -3px -3px 6px var(--shadow-light);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark),
+                       inset -4px -4px 8px var(--shadow-light);
+        }
+
+        /* Communication Styles */
+        .communication-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .message-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 1px solid var(--accent-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--accent-light);
+            padding-bottom: 10px;
+        }
+        
+        .message-sender {
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .message-date {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        
+        .message-subject {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .message-content {
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+        
+        .message-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .message-actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .message-actions button:hover {
+            background: var(--accent-dark);
+        }
+        
+        .compose-form {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--accent-light);
+        }
+        
+        .compose-form h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+        
+        /* Class Styles */
+        .class-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 1px solid var(--accent-light);
+        }
+        
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--accent-light);
+            padding-bottom: 10px;
+        }
+        
+        .class-title {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.2em;
+        }
+        
+        .class-schedule {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        
+        .class-description {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .student-list {
+            margin-top: 15px;
+        }
+        
+        .student-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--accent-light);
+        }
+        
+        .student-name {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+        
+        .student-email {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .student-email:hover {
+            text-decoration: underline;
+        }
+        
+        .announcement-form {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--accent-light);
+        }
+        
+        .announcement-form h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1><a href="index.html" style="color: white; text-decoration: none;">Raptor Connect</a></h1>
+        <h1><a href="index.html">Raptor Connect</a></h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -54,9 +345,180 @@
         <a href="teacher_communication.html">Teacher Communication</a>
     </nav>
     <main>
-        <section id="teacher_communication">
+        <section id="teacher-communication">
             <h2>Teacher Communication</h2>
-            <p>This is the teacher communication page. Teacher communication content will be displayed here.</p>
+            <p>Connect with students, parents, and colleagues to enhance the learning experience.</p>
+            
+            <div class="communication-container">
+                <div class="message-card">
+                    <div class="message-header">
+                        <div class="message-sender">Mr. and Mrs. Smith (Parent)</div>
+                        <div class="message-date">October 12, 2025</div>
+                    </div>
+                    <div class="message-subject">Question about Algebra II Assignment</div>
+                    <div class="message-content">
+                        <p>Dear Mrs. Johnson,</p>
+                        <p>I hope this message finds you well. My daughter Sarah mentioned that she's having trouble with the quadratic equations in the current chapter. Could you provide some additional resources or clarification on this topic?</p>
+                        <p>She's been working hard on her assignments, but this particular concept is challenging for her.</p>
+                        <p>Thank you for your help,<br>Mr. and Mrs. Smith</p>
+                    </div>
+                    <div class="message-actions">
+                        <button class="btn">Reply</button>
+                        <button class="btn">Mark as Read</button>
+                    </div>
+                </div>
+                
+                <div class="message-card">
+                    <div class="message-header">
+                        <div class="message-sender">Principal Rodriguez</div>
+                        <div class="message-date">October 10, 2025</div>
+                    </div>
+                    <div class="message-subject">Faculty Meeting Reminder</div>
+                    <div class="message-content">
+                        <p>Dear Faculty Members,</p>
+                        <p>This is a reminder that we have a faculty meeting scheduled for this Friday, October 15th, at 3:30 PM in the library. The agenda includes:</p>
+                        <ul>
+                            <li>Review of the new math curriculum implementation</li>
+                            <li>Discussion of upcoming parent-teacher conferences</li>
+                            <li>Updates on the school's technology initiatives</li>
+                        </ul>
+                        <p>Please bring your laptops as we will be reviewing the new online grading system.</p>
+                        <p>Thank you,<br>Principal Rodriguez</p>
+                    </div>
+                    <div class="message-actions">
+                        <button class="btn">Reply</button>
+                        <button class="btn">Mark as Read</button>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <div class="class-header">
+                        <div class="class-title">Algebra II - Period 3</div>
+                        <div class="class-schedule">Mon, Wed, Fri - 10:30 AM - 11:45 AM</div>
+                    </div>
+                    <div class="class-description">
+                        <p>Advanced algebra course covering quadratic equations, polynomials, exponential functions, and logarithms.</p>
+                    </div>
+                    <div class="student-list">
+                        <div class="student-item">
+                            <div class="student-name">Sarah Smith</div>
+                            <a href="mailto:sarah.smith@student.edu" class="student-email">sarah.smith@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Michael Johnson</div>
+                            <a href="mailto:michael.johnson@student.edu" class="student-email">michael.johnson@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Emily Davis</div>
+                            <a href="mailto:emily.davis@student.edu" class="student-email">emily.davis@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">James Wilson</div>
+                            <a href="mailto:james.wilson@student.edu" class="student-email">james.wilson@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Olivia Brown</div>
+                            <a href="mailto:olivia.brown@student.edu" class="student-email">olivia.brown@student.edu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <div class="class-header">
+                        <div class="class-title">Algebra II - Period 5</div>
+                        <div class="class-schedule">Mon, Wed, Fri - 1:15 PM - 2:30 PM</div>
+                    </div>
+                    <div class="class-description">
+                        <p>Advanced algebra course covering quadratic equations, polynomials, exponential functions, and logarithms.</p>
+                    </div>
+                    <div class="student-list">
+                        <div class="student-item">
+                            <div class="student-name">David Miller</div>
+                            <a href="mailto:david.miller@student.edu" class="student-email">david.miller@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Sophia Taylor</div>
+                            <a href="mailto:sophia.taylor@student.edu" class="student-email">sophia.taylor@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Ethan Anderson</div>
+                            <a href="mailto:ethan.anderson@student.edu" class="student-email">ethan.anderson@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Isabella Martinez</div>
+                            <a href="mailto:isabella.martinez@student.edu" class="student-email">isabella.martinez@student.edu</a>
+                        </div>
+                        <div class="student-item">
+                            <div class="student-name">Noah Thompson</div>
+                            <a href="mailto:noah.thompson@student.edu" class="student-email">noah.thompson@student.edu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="announcement-form">
+                    <h3>Create Class Announcement</h3>
+                    <form id="announcement-form">
+                        <div class="form-group">
+                            <label for="class-select">Class:</label>
+                            <select id="class-select" required>
+                                <option value="">Select Class</option>
+                                <option value="algebra-3">Algebra II - Period 3</option>
+                                <option value="algebra-5">Algebra II - Period 5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="announcement-subject">Subject:</label>
+                            <input type="text" id="announcement-subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="announcement-content">Announcement:</label>
+                            <textarea id="announcement-content" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Announcement</button>
+                    </form>
+                </div>
+                
+                <div class="compose-form">
+                    <h3>Send Message</h3>
+                    <form id="message-form">
+                        <div class="form-group">
+                            <label for="recipient-type">Recipient Type:</label>
+                            <select id="recipient-type" required>
+                                <option value="">Select Recipient Type</option>
+                                <option value="student">Student</option>
+                                <option value="parent">Parent</option>
+                                <option value="colleague">Colleague</option>
+                                <option value="administrator">Administrator</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient">Recipient:</label>
+                            <select id="recipient" required>
+                                <option value="">Select Recipient</option>
+                                <option value="sarah">Sarah Smith</option>
+                                <option value="michael">Michael Johnson</option>
+                                <option value="emily">Emily Davis</option>
+                                <option value="james">James Wilson</option>
+                                <option value="olivia">Olivia Brown</option>
+                                <option value="david">David Miller</option>
+                                <option value="sophia">Sophia Taylor</option>
+                                <option value="ethan">Ethan Anderson</option>
+                                <option value="isabella">Isabella Martinez</option>
+                                <option value="noah">Noah Thompson</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
     <footer>

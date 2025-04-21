@@ -5,45 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raptor Connect</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --background: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --accent: #ff6a00;
+            --accent-light: #ffa366;
+            --accent-dark: #cc5500;
+            --shadow-light: #ffffff;
+            --shadow-dark: #e0e0e0;
+            --card-bg: #f9f9f9;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         header {
-            background-color: #ff6a00;
-            color: white;
-            padding: 10px 20px;
+            background: var(--accent);
+            padding: 1.5rem 2rem;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
         }
+
         header h1 {
             margin: 0;
-        }
-        nav {
-            background-color: #000000;
-            padding: 10px;
-        }
-        nav a {
+            font-size: 2rem;
+            font-weight: 600;
             color: white;
-            margin: 0 15px;
+        }
+
+        header a {
+            color: white;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
+
+        header a:hover {
+            color: var(--accent-light);
+        }
+
+        nav {
+            background: var(--background);
+            padding: 1rem 2rem;
+            margin: 0 2rem;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 1px solid var(--accent-light);
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
         main {
-            padding: 20px;
+            flex: 1;
+            padding: 2rem;
+            margin: 0 2rem;
         }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-light);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         footer {
-            background-color: #333;
+            background: var(--accent);
             color: white;
             text-align: center;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
+            padding: 1.5rem;
+            margin-top: auto;
+            box-shadow: 0 -5px 10px var(--shadow-dark);
+        }
+
+        /* Button styles */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-dark);
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
+        .btn:active {
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
+        /* Form elements */
+        input, textarea, select {
             width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid var(--accent-light);
+            border-radius: 10px;
+            background: var(--background);
+            color: var(--text-primary);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark),
+                       inset -3px -3px 6px var(--shadow-light);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark),
+                       inset -4px -4px 8px var(--shadow-light);
+        }
+
+        /* List styles */
+        ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        ul li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Link styles */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-dark);
+        }
+
+        /* Important links section */
+        #test-links a {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        #test-links a:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1><a href="index.html" style="color: white; text-decoration: none;">Raptor Connect</a></h1>
+        <h1><a href="index.html">Raptor Connect</a></h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -55,8 +225,8 @@
     </nav>
     <main>
         <section id="about">
-            <h2>Welcome to your Raptor Connect Portal</h2>
-            <p>Here you can navigate to school resources, updates, and communicate with teachers, students, and parents.</p>
+            <h2>About Raptor Connect</h2>
+            <p>Welcome to Raptor Connect, your central hub for school communication and updates.</p>
         </section>
         <section id="events">
             <h2>Weekly Announcements</h2>
@@ -74,11 +244,11 @@
         <section id="test-links">
             <h2>Important Links</h2>
             <div style="display: flex; gap: 10px; margin-top: 15px;">
-                <a href="https://www.google.com" target="_blank" style="background-color: #4285F4; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px;">Google</a>
-                <a href="https://www.youtube.com" target="_blank" style="background-color: #FF0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px;">YouTube</a>
-                <a href="https://www.github.com" target="_blank" style="background-color: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px;">GitHub</a>
-                <a href="https://www.twitter.com" target="_blank" style="background-color: #1DA1F2; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px;">Twitter</a>
-                <a href="https://www.linkedin.com" target="_blank" style="background-color: #0077B5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px;">LinkedIn</a>
+                <a href="https://www.google.com" target="_blank">Google</a>
+                <a href="https://www.youtube.com" target="_blank">YouTube</a>
+                <a href="https://www.github.com" target="_blank">GitHub</a>
+                <a href="https://www.twitter.com" target="_blank">Twitter</a>
+                <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
             </div>
         </section>
     </main>

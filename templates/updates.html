@@ -3,45 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updates - Raptor Connect</title>
+    <title>Raptor Connect</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --background: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --accent: #ff6a00;
+            --accent-light: #ffa366;
+            --accent-dark: #cc5500;
+            --shadow-light: #ffffff;
+            --shadow-dark: #e0e0e0;
+            --card-bg: #f9f9f9;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
+
         header {
-            background-color: #ff6a00;
-            color: white;
-            padding: 10px 20px;
+            background: var(--accent);
+            padding: 1.5rem 2rem;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
         }
+
         header h1 {
             margin: 0;
-        }
-        nav {
-            background-color: #000000;
-            padding: 10px;
-        }
-        nav a {
+            font-size: 2rem;
+            font-weight: 600;
             color: white;
-            margin: 0 15px;
+        }
+
+        header a {
+            color: white;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
+
+        header a:hover {
+            color: var(--accent-light);
+        }
+
+        nav {
+            background: var(--background);
+            padding: 1rem 2rem;
+            margin: 0 2rem;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 1px solid var(--accent-light);
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
         main {
-            padding: 20px;
             flex: 1;
+            padding: 2rem;
+            margin: 0 2rem;
         }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-light);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         footer {
-            background-color: #333;
+            background: var(--accent);
             color: white;
             text-align: center;
-            padding: 10px 0;
-            width: 100%;
+            padding: 1.5rem;
+            margin-top: auto;
+            box-shadow: 0 -5px 10px var(--shadow-dark);
         }
-        
+
+        /* Button styles */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-dark);
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
+        .btn:active {
+            box-shadow: inset 3px 3px 6px var(--accent-dark),
+                       inset -3px -3px 6px var(--accent-light);
+        }
+
+        /* Form elements */
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid var(--accent-light);
+            border-radius: 10px;
+            background: var(--background);
+            color: var(--text-primary);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark),
+                       inset -3px -3px 6px var(--shadow-light);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark),
+                       inset -4px -4px 8px var(--shadow-light);
+        }
+
         /* Updates Styles */
         .updates-container {
             max-width: 900px;
@@ -49,15 +170,24 @@
         }
         
         .update-card {
-            background-color: #f9f9f9;
-            border-radius: 5px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 5px 5px 10px var(--shadow-dark),
+                       -5px -5px 10px var(--shadow-light);
+            border: 1px solid var(--accent-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .update-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 15px var(--shadow-dark),
+                       -8px -8px 15px var(--shadow-light);
         }
         
         .update-date {
-            color: #ff6a00;
+            color: var(--accent);
             font-weight: bold;
             margin-bottom: 5px;
         }
@@ -65,37 +195,39 @@
         .update-title {
             font-size: 1.2em;
             margin-bottom: 10px;
+            color: var(--text-primary);
         }
         
         .update-content {
             line-height: 1.5;
+            color: var(--text-secondary);
         }
         
         .update-category {
             display: inline-block;
-            background-color: #e0e0e0;
             padding: 3px 8px;
             border-radius: 3px;
             font-size: 0.8em;
             margin-right: 5px;
+            color: white;
         }
         
         .update-category.announcement {
-            background-color: #e3f2fd;
+            background-color: var(--accent);
         }
         
         .update-category.event {
-            background-color: #e8f5e9;
+            background-color: var(--accent-dark);
         }
         
         .update-category.reminder {
-            background-color: #fff8e1;
+            background-color: var(--accent-light);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1><a href="index.html" style="color: white; text-decoration: none;">Raptor Connect</a></h1>
+        <h1><a href="index.html">Raptor Connect</a></h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -108,6 +240,7 @@
     <main>
         <section id="updates">
             <h2>School Updates</h2>
+            <p>Stay informed with the latest news and announcements from our school.</p>
             
             <div class="updates-container">
                 <div class="update-card">
