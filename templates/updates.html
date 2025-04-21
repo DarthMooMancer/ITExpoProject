@@ -4,92 +4,259 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Updates - Raptor Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --raptor-orange: #FF6A00;
+            --raptor-black: #000000;
+            --raptor-white: #FFFFFF;
+            --raptor-gray: #F5F5F5;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--raptor-gray);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            position: relative;
+            padding-bottom: 60px;
         }
+
         header {
-            background-color: #ff6a00;
-            color: white;
-            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--raptor-orange), #FF8C00);
+            color: var(--raptor-white);
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         header h1 {
             margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
+
         nav {
-            background-color: #000000;
-            padding: 10px;
+            background-color: var(--raptor-black);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         nav a {
-            color: white;
-            margin: 0 15px;
+            color: var(--raptor-white);
+            margin: 0 20px;
             text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
+
+        nav a:hover {
+            background-color: var(--raptor-orange);
+            transform: translateY(-2px);
+        }
+
         main {
-            padding: 20px;
-            flex: 1;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            width: 100%;
-        }
-        
-        /* Updates Styles */
-        .updates-container {
-            max-width: 900px;
+            padding: 30px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
+
+        .updates-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+        }
+
+        .updates-main {
+            background: var(--raptor-white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .updates-sidebar {
+            background: var(--raptor-white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
         .update-card {
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            padding: 15px;
+            background: var(--raptor-gray);
+            padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--raptor-orange);
+            transition: all 0.3s ease;
         }
-        
+
+        .update-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         .update-date {
-            color: #ff6a00;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .update-title {
-            font-size: 1.2em;
+            color: var(--raptor-orange);
+            font-weight: 600;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        
+
+        .update-date i {
+            font-size: 1.1rem;
+        }
+
+        .update-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--raptor-black);
+        }
+
         .update-content {
-            line-height: 1.5;
+            line-height: 1.6;
+            color: var(--raptor-black);
+            margin-bottom: 15px;
         }
-        
+
         .update-category {
             display: inline-block;
-            background-color: #e0e0e0;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-right: 5px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 10px;
         }
-        
+
         .update-category.announcement {
-            background-color: #e3f2fd;
+            background-color: rgba(255, 106, 0, 0.1);
+            color: var(--raptor-orange);
         }
-        
+
         .update-category.event {
-            background-color: #e8f5e9;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--raptor-black);
         }
-        
+
         .update-category.reminder {
-            background-color: #fff8e1;
+            background-color: rgba(255, 106, 0, 0.2);
+            color: var(--raptor-orange);
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-title {
+            color: var(--raptor-orange);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .filter-option input[type="checkbox"] {
+            accent-color: var(--raptor-orange);
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            padding-left: 40px;
+            border: 2px solid var(--raptor-gray);
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--raptor-orange);
+        }
+
+        .popular-tags {
+            margin-top: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--raptor-gray);
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--raptor-orange);
+            color: var(--raptor-white);
+        }
+
+        footer {
+            background-color: var(--raptor-black);
+            color: var(--raptor-white);
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: var(--raptor-white);
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--raptor-orange);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .update-card {
+            animation: fadeIn 0.5s ease-out;
         }
     </style>
 </head>
@@ -98,20 +265,20 @@
         <h1><a href="index.html" style="color: white; text-decoration: none;">Raptor Connect</a></h1>
     </header>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="calendar.html">Calendar</a>
-        <a href="updates.html">Updates</a>
-        <a href="parent_communication.html">Parent Communication</a>
-        <a href="student_communication.html">Student Communication</a>
-        <a href="teacher_communication.html">Teacher Communication</a>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="calendar.html"><i class="fas fa-calendar"></i> Calendar</a>
+        <a href="updates.html"><i class="fas fa-bullhorn"></i> Updates</a>
+        <a href="parent_communication.html"><i class="fas fa-users"></i> Parent Communication</a>
+        <a href="student_communication.html"><i class="fas fa-graduation-cap"></i> Student Communication</a>
+        <a href="teacher_communication.html"><i class="fas fa-chalkboard-teacher"></i> Teacher Communication</a>
     </nav>
     <main>
-        <section id="updates">
-            <h2>School Updates</h2>
-            
-            <div class="updates-container">
+        <div class="updates-container">
+            <div class="updates-main">
+                <h2>School Updates</h2>
+                
                 <div class="update-card">
-                    <div class="update-date">October 10, 2025</div>
+                    <div class="update-date"><i class="far fa-calendar"></i> October 10, 2025</div>
                     <div class="update-title">New Library Hours Announced</div>
                     <div class="update-category announcement">Announcement</div>
                     <div class="update-content">
@@ -120,7 +287,7 @@
                 </div>
                 
                 <div class="update-card">
-                    <div class="update-date">October 8, 2025</div>
+                    <div class="update-date"><i class="far fa-calendar"></i> October 8, 2025</div>
                     <div class="update-title">Science Fair Registration Deadline</div>
                     <div class="update-category reminder">Reminder</div>
                     <div class="update-content">
@@ -129,7 +296,7 @@
                 </div>
                 
                 <div class="update-card">
-                    <div class="update-date">October 5, 2025</div>
+                    <div class="update-date"><i class="far fa-calendar"></i> October 5, 2025</div>
                     <div class="update-title">Basketball Season Tryouts</div>
                     <div class="update-category event">Event</div>
                     <div class="update-content">
@@ -138,7 +305,7 @@
                 </div>
                 
                 <div class="update-card">
-                    <div class="update-date">October 3, 2025</div>
+                    <div class="update-date"><i class="far fa-calendar"></i> October 3, 2025</div>
                     <div class="update-title">New Math Curriculum Implementation</div>
                     <div class="update-category announcement">Announcement</div>
                     <div class="update-content">
@@ -147,7 +314,7 @@
                 </div>
                 
                 <div class="update-card">
-                    <div class="update-date">October 1, 2025</div>
+                    <div class="update-date"><i class="far fa-calendar"></i> October 1, 2025</div>
                     <div class="update-title">School Spirit Week</div>
                     <div class="update-category event">Event</div>
                     <div class="update-content">
@@ -155,10 +322,50 @@
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="updates-sidebar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search updates...">
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Filter Updates</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" checked> Announcements
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" checked> Events
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" checked> Reminders
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="popular-tags">
+                    <h3 class="filter-title">Popular Tags</h3>
+                    <div class="tags-container">
+                        <span class="tag">#academics</span>
+                        <span class="tag">#sports</span>
+                        <span class="tag">#events</span>
+                        <span class="tag">#important</span>
+                        <span class="tag">#deadlines</span>
+                        <span class="tag">#activities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 Raptor Connect | All Rights Reserved</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
     </footer>
 </body>
 </html>
